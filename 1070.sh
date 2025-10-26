@@ -43,17 +43,17 @@ python -m scripts.tok_eval
 # each optimization step processes a single sequence of 1024 tokens
 # we only run 50 steps of optimization (bump this to get better results)
 python -m scripts.base_train \
-  --depth=4 \
+  --depth=12 \
   --max_seq_len=1024 \
-  --device_batch_size=1 \
-  --total_batch_size=1024 \
-  --eval_every=50 \
+  --device_batch_size=2 \
+  --total_batch_size=2048 \
+  --eval_every=300 \
   --eval_tokens=4096 \
-  --core_metric_every=50 \
+  --core_metric_every=300 \
   --core_metric_max_per_task=12 \
-  --sample_every=50 \
-  --num_iterations=50000
-python -m scripts.base_loss --device_batch_size=1 --split_tokens=4096
+  --sample_every=300 \
+  --num_iterations=1200
+python -m scripts.base_loss --device_batch_size=2 --split_tokens=4096
 python -m scripts.base_eval --max-per-task=16
 
 # midtraining
