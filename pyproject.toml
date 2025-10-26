@@ -14,7 +14,7 @@ dependencies = [
     "setuptools>=80.9.0",
     "tiktoken>=0.11.0",
     "tokenizers>=0.22.0",
-    "torch>=2.8.0",
+    "torch==2.7.1",
     "uvicorn>=0.36.0",
     "wandb>=0.21.3",
 ]
@@ -48,7 +48,7 @@ python_functions = ["test_*"]
 [tool.uv.sources]
 torch = [  
     { index = "pytorch-cpu", extra = "cpu" },  
-    { index = "pytorch-cu128", extra = "gpu" },  
+    { index = "pytorch-cu126", extra = "gpu" },  
 ]
 
 [[tool.uv.index]]  
@@ -57,16 +57,16 @@ url = "https://download.pytorch.org/whl/cpu"
 explicit = true  
   
 [[tool.uv.index]]  
-name = "pytorch-cu128"  
-url = "https://download.pytorch.org/whl/cu128"  
+name = "pytorch-cu126"  
+url = "https://download.pytorch.org/whl/cu126"  
 explicit = true
 
 [project.optional-dependencies]  
 cpu = [  
-    "torch>=2.8.0",  
+    "torch>=2.5.0",  
 ]  
 gpu = [  
-    "torch>=2.8.0",  
+    "torch>=2.5.0",  
 ]  
   
 [tool.uv]  
