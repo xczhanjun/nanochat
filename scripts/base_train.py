@@ -98,6 +98,7 @@ print0(f"num_kv_heads: {num_kv_heads}")
 # figure out the needed gradient accumulation to reach the desired total batch size
 tokens_per_fwdbwd = device_batch_size * max_seq_len # tokens per iteration for a single rank
 world_tokens_per_fwdbwd = tokens_per_fwdbwd * ddp_world_size # total tokens per iteration for all ranks
+print0(f"total_batch_size == world_tokens_per_fwdbwd {world_tokens_per_fwdbwd}")
 assert total_batch_size % world_tokens_per_fwdbwd == 0
 grad_accum_steps = total_batch_size // world_tokens_per_fwdbwd
 print0(f"Tokens / micro-batch / rank: {device_batch_size} x {max_seq_len} = {tokens_per_fwdbwd:,}")
